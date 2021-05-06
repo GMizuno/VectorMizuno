@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from math import sqrt
 from typing import Union
 from typing import List
@@ -5,13 +7,12 @@ from typing import Union
 import numbers
 
 
-class Vector:
+class Vectors:
     '''
     Simple class that works with vectors
     '''
 
-    def __init__(self, vectors: List[Union[int, float]]) -> List[Union[int,
-                                                                       float]]:
+    def __init__(self, vectors: List[Union[int, float]]) -> None:
         '''[summary]
 
         Args:
@@ -20,9 +21,6 @@ class Vector:
         Raises:
             TypeError: [description]
             TypeError: [description]
-
-        Returns:
-            List[Union[int, float]]: [description]
         '''
 
         if len(vectors) == 0:
@@ -64,71 +62,71 @@ class Vector:
 
         return len(self.vectors)
 
-    def __mul__(self, other: Union[Vector, numbers.Real]) -> Vector:
+    def __mul__(self, other: Union[Vectors, numbers.Real]) -> Vectors:
         '''[summary]
 
         Args:
-            other (Vector): [description]
+            other (Vectors): [description]
 
         Returns:
-            Vector: [description]
+            Vectors: [description]
         '''
 
-        if isinstance(other, Vector):
+        if isinstance(other, Vectors):
             if len(self.vectors) == len(other.vectors):
-                return Vector([self.vectors[i]*other.vectors[i] for i in
+                return Vectors([self.vectors[i]*other.vectors[i] for i in
                               range(len(other))])
 
             raise ValueError("Dimensions of {other} and {self} are different")
 
         if isinstance(other, numbers.Real):
-            return Vector([i*other for i in self.vectors])
+            return Vectors([i*other for i in self.vectors])
 
-    def __rmul__(self, other: Union[Vector, numbers.Real]) -> Vector:
+    def __rmul__(self, other: Union[Vectors, numbers.Real]) -> Vectors:
         '''[summary]
 
         Args:
-            other (Union[Vector, numbers.Real]): [description]
+            other (Union[Vectors, numbers.Real]): [description]
 
         Returns:
-            Vector: [description]
+            Vectors: [description]
         '''
         return self.__mul__(other)
 
-    def __add__(self, other: Union[Vector, numbers.Real]) -> Vector:
+    def __add__(self, other: Union[Vectors, numbers.Real]) -> Vectors:
         '''[summary]
 
         Args:
-            other (Union[Vector, numbers.Real]): [description]
+            other (Union[Vectors, numbers.Real]): [description]
 
         Returns:
-            Vector: [description]
+            Vectors: [description]
         '''
 
-        if isinstance(other, Vector):
+        if isinstance(other, Vectors):
             if len(self.vectors) == len(other.vectors):
-                return Vector([self.vectors[i] + other.vectors[i] for i in
+                return Vectors([self.vectors[i] + other.vectors[i] for i in
                                range(len(other))])
             raise ValueError("Dimensions of {other} and {self} are different")
 
         if isinstance(other, numbers.Real):
-            return Vector([i + other for i in self.vectors])
+            return Vectors([i + other for i in self.vectors])
 
-    def __radd__(self, other: Union[Vector, numbers.Real]) -> Vector:
-        '''[summary]
+    def __radd__(self, other: Union[Vectors, numbers.Real]) -> Vectors:
+        '''[summsary]
 
         Args:
-            other (Union[Vector, numbers.Real]): [description]
+            other (Union[Vectors, numbers.Real]): [description]
 
         Returns:
-            Vector: [description]
+            Vectorss: [description]
         '''
 
         return self.__add__(other)
 
 
-a = Vector([1, 2, 1])
-b = Vector([1, 2, 8])
+a = Vectors([1, 2, 1])
+b = Vectors([1, 2, 8])
 
 len(a)
 len(b)
