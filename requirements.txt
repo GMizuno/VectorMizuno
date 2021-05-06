@@ -1,0 +1,16 @@
+# Testing
+pytest
+codecov
+pytest-cov
+tox
+pre-commit
+pytest-benchmark
+
+# Linting
+flake8
+
+# Documentation
+mkdocs
+mkdocstrings
+mkdocs-material
+Pygments
