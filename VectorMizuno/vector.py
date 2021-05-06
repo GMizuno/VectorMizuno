@@ -75,7 +75,7 @@ class Vectors:
         if isinstance(other, Vectors):
             if len(self.vectors) == len(other.vectors):
                 return Vectors([self.vectors[i]*other.vectors[i] for i in
-                              range(len(other))])
+                                range(len(other))])
 
             raise ValueError("Dimensions of {other} and {self} are different")
 
@@ -124,18 +124,19 @@ class Vectors:
 
         return self.__add__(other)
 
+    def __eq__(self, other: Union[Vectors, numbers.Real]) -> bool:
+        '''[summary]
 
-a = Vectors([1, 2, 1])
-b = Vectors([1, 2, 8])
+        Args:
+            other (Union[Vectors, numbers.Real]): [description]
 
-len(a)
-len(b)
-
-a*3
-3*a
-a*b
-41*a
-
-a + b 
-10 + b 
-a + b + 20
+        Returns:
+            bool: [description]
+        '''
+        if isinstance(other, Vectors):
+            if len(other) == len(self) and self.vectors == other.vectors:
+                return True
+            else:
+                return False
+        else:
+            return False
