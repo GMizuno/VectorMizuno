@@ -12,6 +12,7 @@ class VectorsTest(unittest.TestCase):
         self.v2 = Vectors([1, 1, 20])
         self.v3 = Vectors([1.9, .1, 0.1])
         self.v4 = Vectors([0, 0])
+        self.v5 = Vectors([-1, 20])
 
     def test_equal(self):
         ''' Tests the equality operator.
@@ -23,23 +24,18 @@ class VectorsTest(unittest.TestCase):
     def test_add(self):
         ''' Tests the addition operator.
         '''
-        pass
-
-    def test_sub(self):
-        ''' Tests the subtraction operator.
-        '''
-        pass
+        self.assertEqual(self.v1 + self.v2, Vectors([1, 1, 20]))
+        self.assertNotEqual(self.v3 + Vectors([0, 0, 0]), self.v1)
+        self.assertEqual(self.v5 + Vectors([20, 30]), Vectors([19, 50]))
+        self.assertNotEqual(self.v5 + Vectors([20, 30]), Vectors([20, 30]))
 
     def test_mul(self):
         ''' Tests the multiplication operator.
         '''
-        pass
+        self.assertEqual(self.v1*1, self.v1)
+        self.assertEqual(self.v3*Vectors([0, 0, 0]), Vectors([0, 0, 0]))
+        self.assertEqual(self.v5*Vectors([20, 30]), Vectors([-20, 600]))
 
-    def test_div(self):
-        ''' Tests the multiplication operator.
-        '''
-        pass
-    
 
 if __name__ == "__main__":
     unittest.main()
